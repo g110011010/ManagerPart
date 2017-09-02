@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.sf.up.PPT2Img;
+
 /**
  * 将文件信息传递到前端供前端浏览
  * 文件信息为已上传文件
@@ -79,7 +81,10 @@ public class putFileInfo implements ApplicationAware{
         }
 fr.read();
             }
-
+            String fileType = "application/vnd.openxmlformats-officedocument.presentationml.presentation";
+            String filePath = "E:\\PPT\\";
+            String fileName1 = "第4部分-基本汇编语言.pptx";
+            new uploadFile().translatePPT(fileType,filePath,fileName1);
             application.put("info",fileInfoList);
         } catch (IOException e) {
             e.printStackTrace();

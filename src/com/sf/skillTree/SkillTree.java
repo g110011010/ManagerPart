@@ -29,7 +29,6 @@ public class SkillTree {
 
     public SkillTree(String courseName,String currentName) throws SQLException {
         conn=mysqlConnecter.connectToMysql();
-
         this.courseName=courseName.split(";");
         int childId=courseName2CourseID(currentName);
         int [] fatherId=courseName2CourseID(this.courseName);

@@ -68,5 +68,27 @@
         <jarDirectory url="file://F:/服务外包比赛/mahout-distribution-0.5/mahout-distribution-0.5" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://G:/BT/poi-bin-3.16-20170419/poi-3.16" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="file://G:/BT/poi-bin-3.16-20170419/poi-3.16/docs/apidocs" />
+        </JAVADOC>
+        <SOURCES />
+        <jarDirectory url="file://G:/BT/poi-bin-3.16-20170419/poi-3.16" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://G:/BT/poi-bin-3.16-20170419/poi-3.16/ooxml-lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://G:/BT/poi-bin-3.16-20170419/poi-3.16/ooxml-lib" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>

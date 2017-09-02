@@ -29,7 +29,6 @@ public class UserCF {
      * *推荐的结果将存入cf_result数据库
     *@author sf
     */
-
     public static void userCf() throws IOException, TasteException, SQLException {
         System.out.println("OK");
         MysqlDataSource dataSource = new MysqlDataSource();
@@ -40,7 +39,6 @@ public class UserCF {
         dataSource.setAutoClosePStmtStreams(true);
 //        历史记录的数据源
         JDBCDataModel dataModel=new MySQLJDBCDataModel(dataSource,"history_record","userId","courseId","point","time");
-        System.out.println("hello ok");
         // String file = "src/testCF.csv";
 //        File data=new File(file);
 //        DataModel model = new FileDataModel(data);
@@ -97,7 +95,6 @@ public class UserCF {
         }
         return conn;
     }
-
     public static void main(String[] args) throws TasteException, IOException, SQLException {
         new UserCF().userCF(1);
     }

@@ -94,8 +94,6 @@ public class uploadFile extends ActionSupport {
                     * */
                         Connection connection;
                         try {
-                            System.out.println("Tree************"+getPreCourse());
-                            new SkillTree(getPreCourse());
                             connection = mysqlConnecter.connectToMysql();
                             //创建一个Statement对象
                             Statement stmt = connection.createStatement(); //创建Statement对象
@@ -118,6 +116,8 @@ public class uploadFile extends ActionSupport {
                                 sql = "INSERT INTO course(managerId, name, courseid, description, tags) VALUES ("+managerID+",\"" + getCourseName() + "\"," + courseId + ",\"" + getCourseDescribe() + "\",\"" + getCourseTag() + "\");";
                                 stmt.execute(sql);
                             }
+                            System.out.println("Tree************"+getPreCourse());
+                            new SkillTree(getPreCourse(),getCourseName());
                             stmt.close();
                             connection.close();
                         } catch (SQLException e) {
@@ -129,6 +129,7 @@ public class uploadFile extends ActionSupport {
                         File destFile = new File(destPath, myFileFileName.get(lnum));
                         FileUtils.copyFile(myFile.get(lnum), destFile);
                         VideoEdiot ve = new VideoEdiot();
+                       // translatePPT(myFileContentType.get(lnum) + "",destPath,myFileFileName.get(lnum));
 
                     }
                     if (error_r.equals("")) {
@@ -215,6 +216,8 @@ public class uploadFile extends ActionSupport {
      * @return
      */
     private String getPath(String fileType){
+        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+        System.out.println("fileType = [" + fileType + "]");
         if(fileType.equals("application/vnd.openxmlformats-officedocument.presentationml.presentation")||fileType.equals("application/vnd.ms-powerpoint")){
             return relativePath+"PPT\\";
         }
@@ -226,6 +229,26 @@ public class uploadFile extends ActionSupport {
         }
         else
             return relativePath+"Other\\";
+    }
+    public boolean translatePPT(String fileType,String filePath,String fileName){
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        System.out.println("fileType = [" + fileType + "], filePath = [" + filePath + "], fileName = [" + fileName + "]");
+        boolean result=false;
+        if(fileType.equals("application/vnd.openxmlformats-officedocument.presentationml.presentation")){
+           return new PPT2Img().ppt2img(filePath+fileName, filePath+fileName+"IMG"+"/");
+        }
+        else if(fileType.equals("application/vnd.ms-powerpoint")){
+            System.out.println("fileType = [" + fileType + "], filePath = [" + filePath + "]");
+            System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+            return new PPT2Img().pptx2img(filePath+fileName, filePath+fileName+"IMG"+"/");
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+
+
+
     }
 
 }
